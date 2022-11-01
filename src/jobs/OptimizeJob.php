@@ -38,7 +38,7 @@ class OptimizeJob extends BaseJob
      * @param \craft\queue\QueueInterface|\yii\queue\Queue $queue
      * @throws ImagerException
      */
-    public function execute($queue)
+    public function execute($queue): void
     {
         if (isset(ImagerService::$optimizers[$this->optimizer])) {
             ImagerService::$optimizers[$this->optimizer]::optimize($this->filePath, $this->optimizerSettings);

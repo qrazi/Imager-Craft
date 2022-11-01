@@ -25,7 +25,7 @@ use aelvan\imager\Imager as Plugin;
  * @package   Imager
  * @since     2.0.0
  */
-class ImagerTwigExtension extends \Twig_Extension
+class ImagerTwigExtension extends \Twig\Extension\AbstractExtension
 {
     // Public Methods
     // =========================================================================
@@ -50,7 +50,7 @@ class ImagerTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('srcset', [$this, 'srcsetFilter']),
+            new \Twig\TwigFilter('srcset', [$this, 'srcsetFilter']),
         ];
     }
     

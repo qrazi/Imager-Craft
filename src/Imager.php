@@ -173,8 +173,8 @@ class Imager extends Plugin
         );
 
         // Event listener for overriding Craft's internal transform functionality
-        Event::on(Assets::class, Assets::EVENT_GET_ASSET_URL,
-            function (GetAssetUrlEvent $event) {
+        Event::on(Assets::class, \craft\elements\Asset::EVENT_DEFINE_URL,
+            function (\craft\events\DefineAssetUrlEvent $event) {
                 $config = ImagerService::getConfig();
 
                 if ($config->useForNativeTransforms && $event->asset !== null && $event->transform !== null && $event->asset->kind === 'image' && \in_array(strtolower($event->asset->getExtension()), Image::webSafeFormats(), true)) {
@@ -214,7 +214,7 @@ class Imager extends Plugin
 
         // Event listener for overriding Craft's internal thumb url
         Event::on(Assets::class, Assets::EVENT_GET_ASSET_THUMB_URL,
-            function (GetAssetThumbUrlEvent $event) {
+            function (\craft\events\DefineAssetThumbUrlEvent $event) {
                 $config = ImagerService::getConfig();
 
                 if ($config->useForCpThumbs && $event->asset !== null && $event->asset->kind === 'image' && \in_array(strtolower($event->asset->getExtension()), Image::webSafeFormats(), true)) {
@@ -245,7 +245,7 @@ class Imager extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): ?\craft\base\Model
     {
         return new Settings();
     }

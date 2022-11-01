@@ -161,7 +161,7 @@ class Settings extends Model
         $this->init();
     }
 
-    public function init()
+    public function init(): void
     {
         // Have to set this here cause Yii::getAlias can't be used in default value
         $this->imagerSystemPath = FileHelper::normalizePath(Yii::getAlias($this->imagerSystemPath));

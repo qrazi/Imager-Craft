@@ -1,5 +1,8 @@
 # Imager Changelog
 
+### Added
+- feat: Craft CMS 4.x compatibility work
+
 ## 2.4.0 - 2020-02-11
 
 > {warning} This version of Imager is no longer actively maintained. [Imager X](https://plugins.craftcms.com/imager-x) is the successor of Imager 2.0, a commercial plugin with several new and awesome features.
