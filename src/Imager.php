@@ -14,8 +14,6 @@ use Craft;
 use craft\base\Element;
 use craft\base\Plugin;
 use craft\elements\Asset;
-use craft\events\GetAssetThumbUrlEvent;
-use craft\events\GetAssetUrlEvent;
 use craft\events\RegisterCacheOptionsEvent;
 use craft\events\RegisterElementActionsEvent;
 use craft\events\ReplaceAssetEvent;
@@ -181,7 +179,7 @@ class Imager extends Plugin
                     try {
                         $transform = $event->transform;
 
-                        // Transform is an AssetTransform 
+                        // Transform is an AssetTransform
                         if ($transform instanceof AssetTransform) {
                             $transform = ImagerHelpers::normalizeAssetTransformToObject($transform);
                         }
@@ -200,7 +198,7 @@ class Imager extends Plugin
 
                         if (is_array($transform)) {
                             $transformedImage = self::$plugin->imager->transformImage($event->asset, $transform);
-    
+
                             if ($transformedImage !== null) {
                                 $event->url = $transformedImage->getUrl();
                             }
@@ -213,7 +211,7 @@ class Imager extends Plugin
         );
 
         // Event listener for overriding Craft's internal thumb url
-        Event::on(Assets::class, Assets::EVENT_GET_ASSET_THUMB_URL,
+        Event::on(Assets::class, Assets::EVENT_DEFINE_THUMB_URL,
             function (\craft\events\DefineAssetThumbUrlEvent $event) {
                 $config = ImagerService::getConfig();
 
