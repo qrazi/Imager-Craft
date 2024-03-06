@@ -70,7 +70,6 @@ use aelvan\imager\optimizers\PngquantOptimizer;
 use aelvan\imager\optimizers\TinypngOptimizer;
 
 use aelvan\imager\externalstorage\AwsStorage;
-use aelvan\imager\externalstorage\GcsStorage;
 
 
 /**
@@ -299,7 +298,6 @@ class Imager extends Plugin
     private function registerExternalStorages()
     {
         ImagerService::registerExternalStorage('aws', AwsStorage::class);
-        ImagerService::registerExternalStorage('gcs', GcsStorage::class);
     }
 
 }
